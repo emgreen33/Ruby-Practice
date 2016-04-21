@@ -15,3 +15,20 @@
 #     "abcd".slice(2, 2) == "cd"
 #
 # Difficulty: hard.
+
+def longest_palindrome(string)
+	palindrome = ""
+	0.upto(string.length) do |i|
+		string.length.downto(i+1) do |j|
+			sequence = string.slice(i..j)
+			if sequence.length > palindrome.length && sequence == sequence.reverse
+				palindrome = sequence 
+			end
+		end
+	end
+	palindrome
+end
+
+a = "Fourscoreandsevenyearsagoourfaathersbroughtforthonthisconta"
+
+puts longest_palindrome(a)

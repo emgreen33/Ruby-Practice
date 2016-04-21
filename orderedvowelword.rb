@@ -7,3 +7,22 @@
 # which returns true/false if a word's vowels are ordered.
 #
 # Difficulty: 2/5
+
+def ordered_vowel_word?(word)
+	vowels = ["a", "e", "i", "o", "u"]
+	letter_array = word.split("")
+	vowel_array = letter_array.select{|l| vowels.include?(l)}
+	(0...(vowel_array.length-1)).all? do |i|
+		vowel_array[i] <= vowel_array[i+1]
+	end
+end
+
+def ordered_vowel_words(string)
+	words = string.split(" ")
+	ordered_vowel_words = words.select do |word|
+		ordered_vowel_word?(word)
+	end
+	ordered_vowel_words.join(" ")
+end
+
+

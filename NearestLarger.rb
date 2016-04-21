@@ -12,7 +12,21 @@
 # Difficulty: 2/5
 
 def nearest_larger(arr, idx)
-	
+	diff = 1
+	while true
+		left_j = (idx - diff)
+		right_j = (idx + diff)
+		if left_j >= 0 && arr[left_j] > arr[idx]
+			return left_j
+		elsif right_j < arr.length && arr[right_j] > arr[idx]
+			return right_j
+		elsif left_j < 0 && right_j > arr.length 
+			return nil 
+		end
+		diff += 1
+	end
+
+
 end
 
 

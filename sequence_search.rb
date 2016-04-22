@@ -12,22 +12,24 @@
 # Constraint:
 # * You may not use Regular Expressions (RegExp) in your solution.
 
-def sequence_search(sequence, key)
-    seq = sequence.split("")
+def sequence_search(seq, key)
+    seq_array = seq.split("")
     key_array = key.split("")
-    repeats = []
-    nums = ["1", "2", "3"]
-    seq.(length-1).times do |i|
-        if seq[i] == key_array[0]
-            repeats << seq[i]
-            if seq[i+1] == key_array[1] || repeats.include?(seq[i]) || nums.include?(seq[i])
-                repeats << seq[i]
-                if seq[i+2] == key_array[2] || repeats.include?(seq[i]) || nums.include?(seq[i])
-                    return true
-                end
+    key_i = 0
+    seq_array.length.times do |j|
+        if seq_array[j] == key_array[key_i] 
+            key_i += 1
+            if key_i == key_array.length 
+                return true
             end
-        else
-            return false 
+
         end
     end
-end 
+    return false
+end
+  
+
+puts sequence_search("arcata", "cat") # => true
+puts sequence_search("c1a2t3", "cat") # => true
+puts sequence_search("cta", "cat") # => false
+puts sequence_search("caat", "cat") # => true

@@ -7,3 +7,14 @@
 # equal, then they are anagrams.
 #
 # Difficulty: 3/5
+
+def word_unscrambler(word, dict)
+	anagram = word.split("").sort
+	anagrams = [] 
+	words = dict.split(" ")
+	words.each do |word|
+		word_letters = word.split("").sort 
+		anagrams << word_letters if word_letters == anagram 
+	end
+	anagrams
+end

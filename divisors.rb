@@ -28,3 +28,24 @@ end
 puts divisors(4)
 puts divisors(12)
 
+
+def oddity(num)
+	num_divisors = 0
+	#i = 1
+	max = Math.sqrt(num) 
+	max.times do |i|
+		if num % i == 0
+      		if i == max
+        		num_divisors += 1
+      		else
+        		num_divisors += 2
+		  	end
+    	end  
+		#i += 1
+	end
+	if num_divisors % 2 == 0
+		return "even"
+	else
+		return "odd"
+	end
+end

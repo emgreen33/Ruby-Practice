@@ -1,12 +1,20 @@
-#### Five Sort ####
-# Write a function that accepts an array of numbers. It should return a copy of
-# the array, with all instances of the number 5 moved to the end.
-# The ordering of the other elements should remain unchanged.
-#
-# For example:
-# nums = [1, 5, 8, 5, 5, 2, 3]
-# sorted = five_sort(nums)
-# sorted # => [1, 8, 2, 3, 5, 5, 5]
+
+def winning_streak(string)
+    games = string.split("")
+    count = 0
+    longest_count = 0
+    games.count.times do |i|
+        if games[i] == "W"
+            count += 1
+            if count > longest_count
+                longest_count = count
+            end
+        elsif games[i] == "L"
+            count = 0
+        end
+    end
+    longest_count
+end
 
 def five_sort(array)
     count = 0
@@ -23,5 +31,80 @@ def five_sort(array)
 end 
 
 
-p five_sort([5,4,3,5])
-p five_sort([5,5,5,4,3,2,5])
+
+def divisors(num)
+    num_divisors = 0
+    i = 1
+    while i <= num 
+        if num % i == 0
+            num_divisors += 1
+        end
+        i += 1
+    end
+    if num_divisors % 2 == 0
+        return "even"
+    else
+        return "odd"
+    end
+end
+
+
+def aliquot_sum(num)
+    i = 1
+    sum = 0
+    while i < num
+        if (num % i == 0) 
+            sum += i
+        end
+        i += 1 
+    end
+    sum 
+end
+
+
+def aliquot_sequence(base, n)
+    array = [base]
+    i = base
+    (n-1).times do 
+         array << aliquot_sum(i)
+         i = aliquot_sum(i)
+    end
+    array
+end
+
+
+
+def no_repeat?(year)
+    nums_seen = []
+    year.to_s.each_char do |num|
+        return false if nums_seen.include?(num)
+        nums_seen << num 
+    end
+    return true
+end
+
+def no_repeats(year_start, year_end)
+    no_repeat_yrs = []
+    (year_start..year_end).each do |year|
+        no_repeat_yrs << year if no_repeat?(year)
+    end
+    no_repeat_yrs
+end
+
+def bubble_sort(array)
+  finished = false
+  until finished
+    finished = true
+    (array.length - 1).times do |i|
+      if array[i] > array[i + 1]
+        array[i], array[i + 1] = array[i + 1], array[i]
+        finished = false
+      end
+    end
+  end
+
+  array
+end
+
+
+
